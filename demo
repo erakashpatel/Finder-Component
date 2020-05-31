@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+
+<?php 
+
+use Symfony\Component\Finder\Finder;
+
+require __DIR__.'/vendor/autoload.php';
+
+
+$files = Finder::create()
+		->in(__DIR__)
+		->name('*.txt')
+		->contains('{example-key}');
+
+foreach ($files as $file) {
+	var_dump($file->getRealPath());
+}
